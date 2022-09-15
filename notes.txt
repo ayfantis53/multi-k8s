@@ -1,0 +1,5 @@
+Trouble connecting to git
+    $ git remote set-url origin https://github.com/MyRepo/project.git
+    $ git add .
+    $ git commit -m "initial commit"
+    $ git push origin master
