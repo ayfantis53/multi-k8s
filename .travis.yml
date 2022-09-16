@@ -21,8 +21,7 @@ before_install:
   
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t ayfantis53/multi-client -f ./client/Dockerfile.dev ./client
- # - aws s3 ls
- # - AWS_EKS_CLUSTER_NAME = eks-cluster
+  - aws s3 ls
 
 script:
   - docker run -e CI=true ayfantis53/multi-client npm test
@@ -32,3 +31,5 @@ deploy:
   script: bash ./deploy.sh
   on:
     branch: master
+
+ # - AWS_EKS_CLUSTER_NAME = eks-cluster
