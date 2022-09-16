@@ -11,7 +11,11 @@
 #docker push ayfantis53/multi-worker-k8s:$SHA
 
 echo "starting"
-aws eks --region ap-us-east-2 describe-cluster --name eks-cluster --query cluster.status
+aws eks --region us-east-2 describe-cluster --name eks-cluster --query cluster.status
+
+aws sts get-caller-identity
+aws eks update-kubeconfig --name eks-cluster-name --region us-east-2 --role-arn arn:aws:iam::XXXXXXXXXXXX:role/testrole
+kubectl get svc
 
 echo "applying k8 files"
 kubectl apply -f ./k8s/
