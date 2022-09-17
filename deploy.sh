@@ -15,7 +15,7 @@ aws eks --region us-east-2 describe-cluster --name eks-cluster --query cluster.s
 
 aws sts get-caller-identity
 # aws eks update-kubeconfig --name eks-cluster --region us-east-2 --role-arn arn:aws:eks:us-east-2:583762202529:cluster/eks-cluster
-aws eks --region us-east-2 update-kubeconfig --name prod-eks-3flXvI2r --role-arn arn:aws:eks:us-east-2:583762202529:cluster/eks-cluster
+aws eks --region us-east-2 update-kubeconfig --name eks-cluster --role-arn arn:aws:eks:us-east-2:583762202529:cluster/eks-cluster
 kubectl get svc
 
 echo "applying k8 files"
