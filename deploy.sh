@@ -14,7 +14,12 @@ echo "starting"
 aws eks --region us-east-2 describe-cluster --name eks-cluster --query cluster.status
 # aws eks update-kubeconfig --name eks-cluster --region us-east-2 --role-arn arn:aws:eks:us-east-2:583762202529:cluster/eks-cluster
 echo "installing Ingress-Nginx"
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.1/deploy/static/provider/aws/deploy.yaml
+#kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.1/deploy/static/provider/aws/deploy.yaml
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm install my-release ingress-nginx/ingress-nginx
 echo "applying k8 files"
 kubectl apply -f ./k8s/
 
