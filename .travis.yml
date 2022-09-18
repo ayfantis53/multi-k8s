@@ -32,4 +32,8 @@ deploy:
   on:
     branch: master
 
- # - AWS_EKS_CLUSTER_NAME = eks-cluster
+
+#---------------------------------------------------------------#
+# AWS_EKS_CLUSTER_NAME = eks-cluster
+# aws eks list-clusters --region us-east-2
+# 
