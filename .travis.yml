@@ -21,7 +21,10 @@ before_install:
   
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t ayfantis53/multi-client -f ./client/Dockerfile.dev ./client
-  - aws s3 ls
+  # - aws s3 ls
+
+  # Load Balancer Setup
+  
 
 script:
   - docker run -e CI=true ayfantis53/multi-client npm test
@@ -36,4 +39,5 @@ deploy:
 #---------------------------------------------------------------#
 # AWS_EKS_CLUSTER_NAME = eks-cluster
 # aws eks list-clusters --region us-east-2
-# 
+# aws eks update-kubeconfig --region us-east-2 --name eks-cluster
+# kubectl get svc
